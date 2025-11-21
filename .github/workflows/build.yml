@@ -38,5 +38,5 @@ jobs:
           file: Dockerfile.build-installer-kernel-builder-image
           push: true
           tags: |
-            ghcr.io/${{ env.REPO_OWNER }}/truthdb-installer-kernel-build:latest
-            ghcr.io/${{ env.REPO_OWNER }}/truthdb-installer-kernel-build:${{ github.sha }}
+            ghcr.io/${{ env.REPO_OWNER }}/truthdb-installer-kernel-builder:latest
+            ghcr.io/${{ env.REPO_OWNER }}/truthdb-installer-kernel-builder:${{ github.sha }}
