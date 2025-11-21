@@ -27,6 +27,10 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: downcase Repository owner
+        run: |
+          echo "REPO_OWNER=${GITHUB_REPOSITORY_OWNER,,}" >>${GITHUB_ENV}          
+
       - name: Build and push image
         uses: docker/build-push-action@v6
         with:
@@ -34,5 +38,5 @@ jobs:
           file: Dockerfile.build-installer-kernel-builder-image
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/truthdb-installer-kernel-build:latest
-            ghcr.io/${{ github.repository_owner }}/truthdb-installer-kernel-build:${{ github.sha }}
+            ghcr.io/${{ env.REPO_OWNER }}/truthdb-installer-kernel-build:latest
+            ghcr.io/${{ env.REPO_OWNER }}/truthdb-installer-kernel-build:${{ github.sha }}
